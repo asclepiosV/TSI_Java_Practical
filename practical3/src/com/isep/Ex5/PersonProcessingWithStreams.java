@@ -12,10 +12,11 @@ public class PersonProcessingWithStreams {
         persons.add(new Person("Pamela", 13));
         persons.add(new Person("David", 22));
         PersonEvaluator personEvaluator = new PersonEvaluator(persons);
+        System.out.println("\n" + "Name starting from P: ");
         personEvaluator.findAndPrint();
-        System.out.println("\n");
+        System.out.println("\n" + "Older than 18: ");
         personEvaluator.groupAndPrint();
-        System.out.println("\n");
+        System.out.println("\n" + "Group by age: ");
         personEvaluator.groupByAge();
         System.out.println("\n");
         personEvaluator.getAverageAge();

@@ -38,11 +38,10 @@ public class PersonEvaluator {
         for (int i=0;i<n;i++){
             sumAge.add(persons.get(i).age);
         }
-        System.out.println(sumAge);
         int sum = sumAge.stream()
                 .reduce(0, Integer::sum);
-        double avg = sum/n;
-        System.out.println(avg);
+        double avg = (sum + 0.00) /n;
+        System.out.println("Average age = " + avg);
     }
 
 }
