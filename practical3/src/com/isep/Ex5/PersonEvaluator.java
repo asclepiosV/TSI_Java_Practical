@@ -1,19 +1,48 @@
 package com.isep.Ex5;
 
+import java.text.Collator;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PersonEvaluator {
-    List <Person> persons = new ArrayList<>();
+    final List<Person> persons;
 
-    static void findAndPrint() {
-        // code to be executed
+    public PersonEvaluator(List<Person> personnes) {
+        this.persons = personnes;
     }
-    static void groupAndPrint() {
-        // code to be executed
+
+    void findAndPrint(){
+        persons.stream()
+                .filter(person -> person.name.startsWith("P"))
+                .forEach(System.out::println);
     }
-    static void getAverageAge() {
-        // code to be executed
+
+    void groupAndPrint(){
+        persons.stream()
+                .filter(person -> person.age > 18)
+                .forEach(System.out::println);
     }
+
+    void groupByAge(){
+        persons.stream()
+                .sorted(Comparator.comparingInt(s -> s.age))
+                .forEach(System.out::println);
+    }
+
+    void getAverageAge(){
+        int n = persons.size();
+        List<Integer> sumAge = new ArrayList<>();
+        for (int i=0;i<n;i++){
+            sumAge.add(persons.get(i).age);
+        }
+        System.out.println(sumAge);
+        int sum = sumAge.stream()
+                .reduce(0, Integer::sum);
+        double avg = sum/n;
+        System.out.println(avg);
+    }
+
 }
