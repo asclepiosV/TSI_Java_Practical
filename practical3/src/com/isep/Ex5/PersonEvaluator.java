@@ -1,9 +1,7 @@
 package com.isep.Ex5;
 
 import java.text.Collator;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -27,9 +25,12 @@ public class PersonEvaluator {
     }
 
     void groupByAge(){
-        persons.stream()
-                .sorted(Comparator.comparingInt(s -> s.age))
-                .forEach(System.out::println);
+        var updatedList = persons.stream()
+                .collect(Collectors.groupingBy(person -> person.age));
+        updatedList.entrySet().stream()
+                        .forEach(entry -> {
+                            System.out.println("Age " + entry);
+                        });
     }
 
     void getAverageAge(){
