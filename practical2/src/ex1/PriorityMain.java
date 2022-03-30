@@ -1,5 +1,6 @@
 package ex1;
 
+
 public class PriorityMain {
     public static void main(String[] args) {
         Thread min = new PriorityThread("Min");
