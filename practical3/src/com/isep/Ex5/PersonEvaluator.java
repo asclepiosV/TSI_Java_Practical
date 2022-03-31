@@ -34,15 +34,10 @@ public class PersonEvaluator {
     }
 
     void getAverageAge(){
-        int n = persons.size();
-        List<Integer> sumAge = new ArrayList<>();
-        for (int i=0;i<n;i++){
-            sumAge.add(persons.get(i).age);
-        }
-        int sum = sumAge.stream()
-                .reduce(0, Integer::sum);
-        double avg = (sum + 0.00) /n;
-        System.out.println("Average age = " + avg);
+        persons.stream()
+                .mapToDouble(persons -> persons.age)
+                .average()
+                .ifPresent(avg -> System.out.println("\nAverage age is : " + avg));
     }
 
 }

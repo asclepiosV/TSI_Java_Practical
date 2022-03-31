@@ -1,6 +1,7 @@
 package com.isep.Ex2;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,10 +15,8 @@ public class Main {
         listUpper.add("c1");
         listUpper.add("c2");
         listUpper.add("b1");
-        for (int i = 0; i < listUpper.size(); i++) {
-            String newValue = listUpper.get(i).toUpperCase();
-            listUpper.set(i, newValue);
-        }
-        System.out.println(listUpper);
+        listUpper.stream()
+                .map(item -> item.toUpperCase(Locale.ROOT))
+                .forEach(System.out::println);
     }
 }
