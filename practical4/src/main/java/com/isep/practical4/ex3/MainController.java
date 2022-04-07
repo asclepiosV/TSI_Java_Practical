@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,29 +16,41 @@ import java.util.Optional;
 public class MainController {
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private ScheduleRepository scheduleRepository;
+
 
     @GetMapping(path = "/*")
     public ResponseEntity<String> error() {
         return new ResponseEntity<>("<h1>Error 404</h1>" +
                 "<a href=\"/getCourses\">Get all books</a>", HttpStatus.NOT_FOUND);
     }
-    @GetMapping(path="/getCourses")
+
+    @GetMapping(path = "/getCourses")
     public ResponseEntity<Iterable<Course>> getCourses() {
         return new ResponseEntity<>(courseRepository.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/getBook")
+
+    @GetMapping("/getCourse")
     public ResponseEntity<Optional<Course>> getCourse(
             @RequestParam(
                     value = "id",
-                    defaultValue = "1") Long id){
+                    defaultValue = "1") Long id) {
         return new ResponseEntity<>(courseRepository.findById(id), HttpStatus.OK);
     }
 
-    private ScheduleRepository scheduleRepository;
-
-    @GetMapping(path="/getSh")
+    @GetMapping(path = "/getSh")
     public ResponseEntity<Iterable<Schedule>> getSh() {
         return new ResponseEntity<>(scheduleRepository.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping(path = "/all")
+    public ResponseEntity<Iterable<Schedule>> getAll() {
+        return new ResponseEntity<>(scheduleRepository.findAll(), HttpStatus.OK);
+    }
+    public ResponseEntity<Iterable<Schedule>> getAll2() {
+        return new ResponseEntity<>(scheduleRepository.findAll(), HttpStatus.OK);
+    }
+
 }
+

@@ -1,18 +1,21 @@
 package com.isep.practical4.ex3;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "course")
 public class Course {
-    private @Id @JsonProperty Long Course_Id;
-    private @JsonProperty String Course_Teacher;
-    private @JsonProperty String Course_Name;
-    private @JsonProperty String Course_Content;
+    private @Id Long Course_Id;
+    private String Course_Teacher;
+    private String Course_Name;
+    private String Course_Content;
+
+
     public Course() {}
 
+    public Long getSchedule(Schedule schedule) {
+        return schedule.getShId();
+    }
 
     public Long getCourseId(){
         return this.Course_Id;

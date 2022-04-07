@@ -8,8 +8,8 @@ import java.sql.Date;
 
 @Entity
 public class Schedule {
-    private @Id @JsonProperty Long Sh_Id;
-    private @JsonProperty java.sql.Date Date;
+    private @Id Long Sh_Id;
+    private java.sql.Date Date;
     public Schedule() {}
 
     public Long getShId(){
