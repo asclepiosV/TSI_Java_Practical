@@ -23,7 +23,7 @@ public class MainController {
     @GetMapping(path = "/*")
     public ResponseEntity<String> error() {
         return new ResponseEntity<>("<h1>Error 404</h1>" +
-                "<a href=\"/getCourses\">Get all books</a>", HttpStatus.NOT_FOUND);
+                "<a href=\"/getCourses\">Get all courses</a>", HttpStatus.NOT_FOUND);
     }
 
     @GetMapping(path = "/getCourses")
@@ -39,18 +39,11 @@ public class MainController {
         return new ResponseEntity<>(courseRepository.findById(id), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/getSh")
-    public ResponseEntity<Iterable<Schedule>> getSh() {
+    @GetMapping(path = "/getSchedule")
+    public ResponseEntity<Iterable<Schedule>> getSchedule() {
         return new ResponseEntity<>(scheduleRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "/all")
-    public ResponseEntity<Iterable<Schedule>> getAll() {
-        return new ResponseEntity<>(scheduleRepository.findAll(), HttpStatus.OK);
-    }
-    public ResponseEntity<Iterable<Schedule>> getAll2() {
-        return new ResponseEntity<>(scheduleRepository.findAll(), HttpStatus.OK);
-    }
 
 }
 
